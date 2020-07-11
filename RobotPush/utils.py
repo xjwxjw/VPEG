@@ -25,55 +25,7 @@ import imageio
 hostname = socket.gethostname()
 
 def load_dataset(opt):
-    if opt.dataset == 'smmnist':
-        from data.moving_mnist import MovingMNIST
-        train_data = MovingMNIST(
-                train=True,
-                data_root=opt.data_root,
-                seq_len=opt.n_past+opt.n_future,
-                image_size=opt.image_width,
-                deterministic=False,
-                num_digits=opt.num_digits)
-        test_data = MovingMNIST(
-                train=False,
-                data_root=opt.data_root,
-                seq_len=opt.n_eval,
-                image_size=opt.image_width,
-                deterministic=False,
-                num_digits=opt.num_digits)
-    elif opt.dataset == 'dmmnist':
-        from data.moving_mnist import MovingMNIST
-        train_data = MovingMNIST(
-                train=True,
-                data_root=opt.data_root,
-                seq_len=opt.n_past+opt.n_future,
-                image_size=opt.image_width,
-                deterministic=True,
-                num_digits=opt.num_digits)
-        test_data = MovingMNIST(
-                train=False,
-                data_root=opt.data_root,
-                seq_len=opt.n_eval,
-                image_size=opt.image_width,
-                deterministic=True,
-                num_digits=opt.num_digits)
-    elif opt.dataset == 'dmmnist-match':
-        from data.moving_mnist import MovingMNISTMatch
-        train_data = MovingMNISTMatch(
-                train=True,
-                data_root=opt.data_root,
-                seq_len=opt.n_past+opt.n_future,
-                image_size=opt.image_width,
-                deterministic=True,
-                num_digits=opt.num_digits)
-        test_data = MovingMNISTMatch(
-                train=False,
-                data_root=opt.data_root,
-                seq_len=opt.n_past+opt.n_future,
-                image_size=opt.image_width,
-                deterministic=True,
-                num_digits=opt.num_digits)
-    elif opt.dataset == 'bair':
+    if opt.dataset == 'bair':
         from data.bair import RobotPush 
         train_data = RobotPush(
                 data_root=opt.data_root,
@@ -97,26 +49,13 @@ def load_dataset(opt):
                 train=False,
                 seq_len=opt.n_eval,
                 image_size=opt.image_width)
-    elif opt.dataset == 'kth':
-        from data.kth import KTH 
-        train_data = KTH(
-                train=True, 
-                data_root=opt.data_root,
-                seq_len=opt.n_past+opt.n_future, 
-                image_size=opt.image_width)
-        test_data = KTH(
-                train=False, 
-                data_root=opt.data_root,
-                seq_len=opt.n_eval, 
-                image_size=opt.image_width)
-    
     return train_data, test_data
 
 def sequence_input(seq, dtype):
     return [Variable(x.type(dtype)) for x in seq]
 
 def normalize_data(opt, dtype, sequence):
-    if opt.dataset == 'smmnist' or opt.dataset == 'dmmnist' or opt.dataset == 'dmmnist-match' or opt.dataset == 'kth' or opt.dataset == 'bair'  or opt.dataset == 'bair-match' :
+    if opt.dataset == 'bair'  or opt.dataset == 'bair-match' :
         sequence.transpose_(0, 1)
         sequence.transpose_(3, 4).transpose_(2, 3)
     else:
