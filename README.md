@@ -13,7 +13,7 @@ CUDA_VISIBLE_DEVICES=0 python train_vpeg_feature.py --dataset bair --model vgg -
 
 4. Train the motion predictor: 
 
-CUDA_VISIBLE_DEVICES=0 python train_vpeg.py --dataset bair-match --model vgg --g_dim 128 --z_dim 16 --beta 0.0001 --alpha 0.01 --n_past 5 --n_future 10 --channels 3 --log_dir logs/bair-match/ --data_dir /your/data/path
+CUDA_VISIBLE_DEVICES=0 python train_vpeg.py --dataset bair-match --model vgg --g_dim 128 --z_dim 16 --beta 0.0001 --alpha 0.01 --n_past 5 --n_future 10 --channels 3 --log_dir logs/bair-match/ --data_dir /your/data/path --feat_model_dir /path/to/trained/model/at/previous/step
 
 Further explanation about the code:
 
