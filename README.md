@@ -1,4 +1,4 @@
-# VPEG
+# Video Prediction via Example Guidance (VPEG)
 
 Project Page: https://sites.google.com/view/vpeg-supp/home
 
