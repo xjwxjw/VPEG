@@ -18,6 +18,4 @@ python train_vpeg_feature.py --dataset bair --model vgg --g_dim 128 --z_dim 16 -
 
 python train_vpeg.py --dataset bair-match --model vgg --g_dim 128 --z_dim 16 --beta 0.0001 --alpha 0.01 --n_past 5 --n_future 10 --channels 3 --log_dir logs/bair-match/ --data_dir /your/data/path --feat_model_dir /path/to/trained/model/at/previous/step
 
-Further explanation about the code:
-
 The general idea behind our work is very easy to implement. On this dataset our code is built based on this repo (https://github.com/edenton/svg). The major contribution of our work is reflected in the train_vpeg.py (from L.355-L.390) and train_vpeg_feature.py. Please refer to the comment in the code for more details.
