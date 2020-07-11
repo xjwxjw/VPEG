@@ -17,7 +17,7 @@ parser.add_argument('--beta1', default=0.9, type=float, help='momentum term for 
 parser.add_argument('--batch_size', default=16, type=int, help='batch size')
 parser.add_argument('--log_dir', default='logs/lp', help='base directory to save logs')
 parser.add_argument('--model_dir', default='', help='base directory to save logs')
-parser.add_argument('--feat_model_dir', default='/media/xjw/E4C04590C04569BE/svg/logs/bair-feat/bair/model=vgg64x64-rnn_size=256-predictor-posterior-prior-rnn_layers=2-1-1-n_past=2-n_future=10-lr=0.0020-g_dim=128-z_dim=24-last_frame_skip=False-beta=0.0001000/', help='base directory to save logs')
+parser.add_argument('--feat_model_dir', default='', help='base directory to save logs')
 parser.add_argument('--name', default='', help='identifier for directory')
 parser.add_argument('--data_root', default='data', help='root directory for data')
 parser.add_argument('--optimizer', default='adam', help='optimizer to train with')
