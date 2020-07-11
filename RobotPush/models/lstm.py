@@ -120,7 +120,4 @@ class gaussian_lstm(nn.Module):
             h_in = self.hidden[i][0]
         mu = self.mu_net(h_in)
         return mu
-        # logvar = self.logvar_net(h_in)
-        # z = self.reparameterize(mu, logvar)
-        # return z, mu, logvar
             
