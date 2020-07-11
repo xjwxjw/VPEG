@@ -17,4 +17,4 @@ CUDA_VISIBLE_DEVICES=0 python train_vpeg.py --dataset bair-match --model vgg --g
 
 Further explanation about the code:
 
-The general idea behind our work is very easy to implement. Our code is built based this repo (https://github.com/edenton/svg). The major contribution of our work is reflected in the train_vpeg.py (from L.355-L.390) and train_vpeg_feature.py. Please refer to the comment in the code for more details.
+The general idea behind our work is very easy to implement. Our code is built based on this repo (https://github.com/edenton/svg). The major contribution of our work is reflected in the train_vpeg.py (from L.355-L.390) and train_vpeg_feature.py. Please refer to the comment in the code for more details.
