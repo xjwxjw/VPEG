@@ -26,7 +26,7 @@ hostname = socket.gethostname()
 
 def load_dataset(opt):
     if opt.dataset == 'bair':
-        from data.bair import RobotPush 
+        from bair import RobotPush 
         train_data = RobotPush(
                 data_root=opt.data_root,
                 train=True,
@@ -38,7 +38,7 @@ def load_dataset(opt):
                 seq_len=opt.n_eval,
                 image_size=opt.image_width)
     elif opt.dataset == 'bair-match':
-        from data.bair import RobotPushMatch as RobotPush
+        from bair import RobotPushMatch as RobotPush
         train_data = RobotPush(
                 data_root=opt.data_root,
                 train=True,
