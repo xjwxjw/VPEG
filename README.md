@@ -8,7 +8,9 @@ Code Release for "Video Prediction via Example Guidance" (ICML 2020), under cons
 
 ### 1. Download the dataset: http://rail.eecs.berkeley.edu/datasets/bair_robot_pushing_dataset_v0.tar
 
-### 2. Extract the data: python extract.py
+### 2. Extract the data: 
+
+python extract.py
 
 ### 3. Train the feature extractor: 
 
