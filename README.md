@@ -30,4 +30,8 @@ On this dataset our code is built based on this repo (https://github.com/edenton
 
 python train.py --mode motion_generator --config configs/penn.yaml
 
+### 3. Generate the predicted seuqences:
+
+python evaluate.py --config configs/penn.yaml --checkpoint_stage1 ./PretrainedModel/stage1/model.ckpt --checkpoint_stage2 ./results_VPEG/motion_generator/model.ckpt-60000 --save_dir ./gif_VPEG
+
 The general idea of our work is very easy to implement. The major contribution of our work on this dataset is reflected in the models/motion_generator_model.py (from L.179-L.234 and from L.347-L.384). In the config file (configs/penn.yaml), setting the variable ''sth_pro'' as True enables to train the baseline model with our methods. Please refer to the comment in the code for more details (With indicator ""Our work"").
