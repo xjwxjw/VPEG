@@ -18,7 +18,7 @@ python train_vpeg_feature.py --dataset bair --model vgg --g_dim 128 --z_dim 16 -
 
 python train_vpeg.py --dataset bair-match --model vgg --g_dim 128 --z_dim 16 --beta 0.0001 --alpha 0.01 --n_past 5 --n_future 10 --channels 3 --log_dir logs/bair-match/ --data_dir /your/data/path --feat_model_dir /path/to/trained/model/at/previous/step
 
-On this dataset our code is built based on this repo (https://github.com/edenton/svg). The major contribution of our work is reflected in the train_vpeg.py (from L.355-L.390) and train_vpeg_feature.py. Please refer to the comment in the code for more details.
+On this dataset our code is built based on this repo (https://github.com/edenton/svg). The major contribution of our work is reflected in the train_vpeg.py (from L.355-L.390) and train_vpeg_feature.py. Please refer to the comment in the code for more details (With indicator ""Our work"").
 
 ## On the PennAction Dataset:
 
@@ -28,4 +28,4 @@ On this dataset our code is built based on this repo (https://github.com/edenton
 
 python train.py --mode motion_generator --config configs/penn.yaml
 
-The general idea of our work is very easy to implement. The major contribution of our work on this dataset is reflected in the models/motion_generator_model.py (from L.179-L.234 and from L.347-L.384). In the config file (configs/penn.yaml), setting the variable ''sth_pro'' as True enables to train the baseline model with our methods. Please refer to the comment in the code for more details.
+The general idea of our work is very easy to implement. The major contribution of our work on this dataset is reflected in the models/motion_generator_model.py (from L.179-L.234 and from L.347-L.384). In the config file (configs/penn.yaml), setting the variable ''sth_pro'' as True enables to train the baseline model with our methods. Please refer to the comment in the code for more details (With indicator ""Our work"").
