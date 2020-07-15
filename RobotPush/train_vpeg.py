@@ -352,7 +352,7 @@ def train(x, y):
         else:
             h = h[0]
         
-        ## at each time stamp we predict 5 random results##
+        ## Our work: at each time stamp we predict 5 random results ##
         select_tensor = torch.zeros((opt.batch_size, 5, opt.g_dim)).cuda()
         err_list = []
         pred_list = []
@@ -371,7 +371,7 @@ def train(x, y):
             pred_list.append(h_pred.unsqueeze(1))
             err_list.append(torch.mean(torch.abs(h_pred - h_target), -1))
         
-        ## select the best match one as prediction##
+        ## Our work: select the best match one as prediction ##
         err_tensor = torch.cat([err.unsqueeze(-1) for err in err_list], -1)
         min_idx = torch.argmin(err_tensor, -1)
         for bs in range(opt.batch_size):
@@ -380,10 +380,10 @@ def train(x, y):
 
         x_pred = decoder([h_pred, skip])
 
-        ## match with the expection ##
+        ## Our work: match with the expection ##
         mse += (mse_criterion(x_pred, x[i]) + opt.alpha * mse_criterion(mu, mu_p))
     
-        ## match with the variation ##
+        ## Our work: match with the variation ##
         ref_var = torch.std(torch.cat([(h_match[m] - h_match_prev[m]).unsqueeze(1) for m in range(5)], 1), 1)
         pre_var = torch.std(torch.cat([pred_list[m] - h.unsqueeze(1) for m in range(5)], 1), 1)
         var += mse_criterion(ref_var, pre_var)
