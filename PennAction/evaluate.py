@@ -86,7 +86,7 @@ def main():
         sample_idx = 0
         n_iters = utils.training.get_n_iterations(test_loader.length(), batch_size)
         feed_dict = {handle_pl: test_handle, training_pl: False}
-        for j in range(n_iters):
+        for j in range(90):
             min_mse = 1.0
             for s in range(20):
                 outputs = model.run(sess, feed_dict)
