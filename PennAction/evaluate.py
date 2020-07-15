@@ -91,24 +91,6 @@ def main():
             for s in range(20):
                 outputs = model.run(sess, feed_dict)
                 cur_mse = np.mean(np.abs(outputs['fut_pt_raw'] - outputs['real_seq']))
-                # print(j,s)
-                import matplotlib.pyplot as plt
-                import os
-                if model.sth_pro:
-                    for i in range(5):
-                        plt.plot(np.array([_ for _ in range(1, 33)]), outputs['ref_seq'][0,i,:,0])
-                    os.makedirs('./sample_test_ours/'+str(j), exist_ok = True)
-                    plt.plot(np.array([_ for _ in range(1, 33)]), outputs['fut_pt_raw'][0,:,0], '*')
-                    plt.plot(np.array([_ for _ in range(1, 33)]), outputs['real_seq'][0,:,0], 'o')
-                    plt.plot(np.array([0]), outputs['first_pt'][0,0], 'o')
-                    plt.savefig('./sample_test_ours/'+str(j)+'/'+str(s)+'.png')
-                    plt.clf()
-                else:
-                    os.makedirs('./sample_test_vae/'+str(j), exist_ok = True)
-                    plt.plot(outputs['fut_pt_raw'][0,:,0], '*')
-                    plt.plot(outputs['real_seq'][0,:,0], 'o')
-                    plt.savefig('./sample_test_vae/'+str(j)+'/'+str(s)+'.png')
-                    plt.clf()
 
                 if cur_mse < min_mse:
                     min_mse = cur_mse
