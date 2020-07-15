@@ -184,6 +184,7 @@ class MotionGeneratorModel(BaseModel):
                                               self.cell_info,
                                               self.vae_dim,
                                               ref_seq)
+                ## Our work: at each training iteration, obtain 5 stochastic predictions. ##
                 for _ in range(5):
                     z = mu + stddev * tf.random_normal(tf.shape(mu), 0, 1, dtype=tf.float32)
                     tmp = networks.vae_decoder(z,
@@ -346,6 +347,7 @@ class MotionGeneratorModel(BaseModel):
 
     def _compute_loss_G(self, pred_seq, real_seq, mu, stddev, ref_seq = None):
         if self.sth_pro:
+            ## Our work: match with the expectation, select the best predicted one to train the model ##
             mse_array = [tf.reduce_mean(tf.abs(cur_pred - real_seq), axis = [-2,-1], keepdims = True) for cur_pred in pred_seq]
             mse_tensor = tf.concat(axis = -1, values = mse_array) 
             mask = tf.one_hot(indices = tf.argmin(mse_tensor, axis = -1), depth = 5, axis = -1, on_value = 1.0, off_value = 0.0)
@@ -357,6 +359,7 @@ class MotionGeneratorModel(BaseModel):
             l = 1000 * tf.abs(pred_seq - real_seq)
         pred_seq_loss = tf.reduce_mean(l)
         if self.sth_pro:
+            ## Our work: match with the variance, the variance of best predicted one shold match with one of the reference sequences ##
             pred_var = tf.tile(tf.expand_dims(pred_seq[0][:,1:] - pred_seq[0][:,:(N_FUTURE_FRAMES-1)], 1), [1, 5, 1, 1])
             ref_var = ref_seq[:,:,1:] - ref_seq[:,:,:(N_FUTURE_FRAMES-1)]
             mse_var = tf.reduce_mean(tf.abs(pred_var - ref_var), [-2, -1], keepdims = True)
@@ -368,6 +371,7 @@ class MotionGeneratorModel(BaseModel):
 
             _, pred_std = tf.nn.moments(pred_var, [1])
             _, red_std = tf.nn.moments(ref_var, [1])
+            ## Our work: match with the variance, the variance of 5 randomly predicted results shold match with the reference ##
             kl_l = 0.5 * tf.reduce_mean(tf.abs(pred_std - red_std))
         else:
             kl_l = 0.5 * tf.reduce_sum(tf.square(mu) + tf.square(stddev) - tf.log(1e-8 + tf.square(stddev)) - 1, 1)
