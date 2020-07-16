@@ -6,7 +6,9 @@ Code Release for "Video Prediction via Example Guidance" (ICML 2020), under cons
 
 ## On the RobotPush Dataset:
 
-### 1. Download the dataset: http://rail.eecs.berkeley.edu/datasets/bair_robot_pushing_dataset_v0.tar
+### 1. Download the dataset: 
+
+http://rail.eecs.berkeley.edu/datasets/bair_robot_pushing_dataset_v0.tar
 
 ### 2. Extract the data: 
 
