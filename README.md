@@ -30,9 +30,7 @@ The general idea of our work is very simple and straightforward. On this dataset
 
 ## On the PennAction Dataset:
 
-### 1. Follow [this repo](https://github.com/YunjiKim/Unsupervised-Keypoint-Learning-for-Guiding-Class-conditional-Video-Prediction) to download/preprocess the PennAction data. 
-
-### 2. Follow [this repo](https://github.com/YunjiKim/Unsupervised-Keypoint-Learning-for-Guiding-Class-conditional-Video-Prediction) to generate pseudo-keypoints labels.
+### 1. Follow [this repo](https://github.com/YunjiKim/Unsupervised-Keypoint-Learning-for-Guiding-Class-conditional-Video-Prediction) to download/preprocess the PennAction data and to generate pseudo-keypoints labels.
 
 ### 3. Train the motion predictor:
 
