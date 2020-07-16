@@ -32,11 +32,11 @@ The general idea of our work is very simple and straightforward. On this dataset
 
 ### 1. Follow [this repo](https://github.com/YunjiKim/Unsupervised-Keypoint-Learning-for-Guiding-Class-conditional-Video-Prediction) to download/preprocess the PennAction data and to generate pseudo-keypoints labels.
 
-### 3. Train the motion predictor:
+### 2. Train the motion predictor:
 
 python train.py --mode motion_generator --config configs/penn.yaml
 
-### 4. Generate the predicted seuqences:
+### 3. Generate the predicted seuqences:
 
 python evaluate.py --config configs/penn.yaml --checkpoint_stage1 ./PretrainedModel/stage1/model.ckpt --checkpoint_stage2 ./results_VPEG/motion_generator/model.ckpt-60000 --save_dir ./gif_VPEG
 
