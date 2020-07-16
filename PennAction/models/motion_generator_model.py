@@ -373,9 +373,11 @@ class MotionGeneratorModel(BaseModel):
             _, red_std = tf.nn.moments(ref_var, [1])
             ## Our work: match with the variance, the variance of 5 randomly predicted results shold match with the reference ##
             kl_l = 0.5 * tf.reduce_mean(tf.abs(pred_std - red_std))
+            kl_loss = tf.reduce_mean(kl_l) + tf.reduce_mean(var_loss)
         else:
             kl_l = 0.5 * tf.reduce_sum(tf.square(mu) + tf.square(stddev) - tf.log(1e-8 + tf.square(stddev)) - 1, 1)
-        kl_loss = tf.reduce_mean(kl_l) + tf.reduce_mean(var_loss)
+            kl_loss = tf.reduce_mean(kl_l)
+        
         fake_ = networks.seq_discr(pred_seq[0])
         adv_loss = tf.reduce_mean(
             tf.nn.sigmoid_cross_entropy_with_logits(labels=tf.ones_like(fake_), logits=fake_)
